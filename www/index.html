@@ -35,17 +35,63 @@
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
+        <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.943/build/pdf.min.js"></script>
+        <title>PDF.JS - TESTE1</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+        <!--
+        <div class="top-bar">
+            <button class="btn" id="prev-page">
+                <i class="fas fa-arrow-circle-left"></i> Prev Page
+            </button>
+            <button class="btn" id="next-page">
+                Next Page <i class="fas fa-arrow-circle-right"></i>
+            </button>
+            <span class="page-info">
+                Page <span id="page-num"></span> of <span id="page-count"></span>
+            </span>
+          </div>
+          
+          <canvas id="pdf-render"></canvas>
+        -->
+        <!--*********************************************************************************-->
+        
+        <canvas id="pdf-render"></canvas>
+        <script>
+            pdfjsLib.getDocument('https://s3.us-east-1.amazonaws.com/prateleira.ipdvonline.com.br/upload/cliente8285/pdf/arquivo1_1_18022021_164302.pdf').then(doc => {
+                console.log("this file has" + doc._pdfInfo.numPages + " pages")
+
+                doc.getPage(3).then(page => {
+                    var myCanvas = document.getElementById("pdf-render");
+                    var context = myCanvas.getContext("2d");
+                    var viewport = page.getViewport(1);
+                    myCanvas.height = viewport.height;
+                    myCanvas.width = viewport.width;
+                    
+                    page.render({
+                        canvasContext:context, 
+                        viewport: viewport
+                        })
+                })
+            })
+            console.log("tetse")
+        </script>
+
+        
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
     </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
