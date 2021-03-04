@@ -23,11 +23,6 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
-
-    document.querySelector('#loadPDF1').addEventListener('touchend', loadPDF1,false);
-    document.querySelector('#loadPDF2').addEventListener('touchend', loadPDF2,false);
-    document.querySelector('#loadPDF3').addEventListener('touchend', loadPDF3,false);
-
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 }
@@ -66,3 +61,7 @@ function loadPDF3() {
       });
   });
 }
+
+    document.querySelector('#loadPDF1').addEventListener('touchend', loadPDF1,false);
+    document.querySelector('#loadPDF2').addEventListener('touchend', loadPDF2,false);
+    document.querySelector('#loadPDF3').addEventListener('touchend', loadPDF3,false);
